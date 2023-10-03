@@ -5,8 +5,8 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 
-const HTTPS_PORT = process.env.NODE_EV === "production" ? 443 : 5000;
-const HTTP_PORT = 80;
+const HTTPS_PORT = process.env.NODE_ENV === "production" ? 443 : 5000;
+const HTTP_PORT = process.env.NODE_ENV === "production" ? 80 : 5001;
 
 (async () => {
   const SSL_KEY = fs.readFileSync(
