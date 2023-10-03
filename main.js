@@ -10,12 +10,13 @@ const HTTP_PORT = process.env.NODE_ENV === "production" ? 80 : 5001;
 
 (async () => {
   const SSL_KEY = fs.readFileSync(
-    path.resolve(__dirname, "privKey.pem", "utf-8")
+    path.resolve(__dirname, "privKey.pem"),
+    "utf-8"
   );
   const SSL_CERT = fs.readFileSync(
-    path.resolve(__dirname, "cert.pem", "utf-8")
+    path.resolve(__dirname, "cert.pem"),
+    "utf-8"
   );
-  const SSL_CA = fs.readFileSync(path.resolve(__dirname, "chain.pem", "utf-8"));
 
   const app = express();
 
@@ -44,7 +45,6 @@ const HTTP_PORT = process.env.NODE_ENV === "production" ? 80 : 5001;
       {
         key: SSL_KEY,
         cert: SSL_CERT,
-        ca: SSL_CA,
       },
       app
     )
